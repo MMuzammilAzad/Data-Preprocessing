@@ -1,0 +1,34 @@
+# Set up the image data generator
+test_datagen = ImageDataGenerator(rescale=1./255)
+
+# Define the batch size and image dimensions
+batch_size = 32
+img_height = 128
+img_width = 128
+
+# Load the training data from the folders
+test_data = test_datagen.flow_from_directory(
+    '1_RP_Response_1_2_3_8_Splitted/test',
+    target_size=(img_height, img_width),
+    batch_size=batch_size,
+    class_mode='categorical',
+    shuffle=True
+)
+
+# Get the next batch of training data
+batch_X, batch_Y = next(test_data)
+
+# Print the shape of the input images and labels
+print('Input images shape:', batch_X.shape)
+print('Labels shape:', batch_Y.shape)
+
+
+
+# Display the first input image in the batch
+import matplotlib.pyplot as plt
+plt.imshow(batch_X[0])
+plt.show()
+
+
+# Print the labels for the batch
+print('Labels:', batch_Y)

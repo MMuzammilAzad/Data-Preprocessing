@@ -1,0 +1,13 @@
+pip install split-folders
+
+import splitfolders
+
+input_folder = '1_RP_Response_1_2_3_8/'
+
+# based on ratio
+splitfolders.ratio (input_folder, output = "1_RP_Response_1_2_3_8_Splitted", seed = 42,
+                   ratio = (0.7, 0.2, 0.1), group_prefix = None)
+
+# based on number of images
+splitfolders.fixed (input_folder, output = "1_RP_Response_1_2_3_8_Splitted", seed = 42,
+                   fixed = (100, 100), oversample = False, group_prefix = None)
